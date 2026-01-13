@@ -35,3 +35,19 @@ export function fibonacciRecursive(n) {
 
     return fibonacciRecursive(n-2) + fibonacciRecursive(n-1);
 }
+
+// Original solution is O(2^n), if memoization is used, can reduce to O(n)
+export function memoFibonacci(n, memo={}) {
+    if (typeof memo[n] !== 'undefined') {
+        return memo[n];
+    }
+
+    if (n === 0) {
+        return 0;
+    } else if (n === 1) {
+        return 1;
+    }
+
+    memo[n] = memoFibonacci(n-1, memo) + memoFibonacci(n-2, memo);
+    return memo[n];
+}

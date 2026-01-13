@@ -17,9 +17,11 @@
  * array and Tom appears in Aubrey's friend array.
  */
 /* Dependencies  */
+import Person from "../../../data-structures/Person.js";
 import Queue from "../../../data-structures/Queue.js"
 
 export default function getNDegreesOfSeparation(startingPerson, targetId) {
+
     if (startingPerson.id === targetId) return 0;
 
     // Breadth-first should find our match faster. We need to keep track of

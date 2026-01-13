@@ -20,33 +20,4 @@
 import Person from "../../../data-structures/Person.js";
 import Queue from "../../../data-structures/Queue.js"
 
-export default function getNDegreesOfSeparation(startingPerson, targetId) {
-
-    if (startingPerson.id === targetId) return 0;
-
-    // Breadth-first should find our match faster. We need to keep track of
-    // how many layers we examine.
-    const queue = new Queue([{person: startingPerson, layer: 0}]),
-          visited = new Set(startingPerson.id);
-
-    while (!queue.isEmpty()) {
-        const { person, layer } = queue.dequeue();
-
-        // Check if we found our target
-        if (person.id === targetId) {
-            return layer;
-        }
-
-        // Examine friends
-        const friends = person.getFriends();
-        for (let i=0; i<friends.length; i++) {
-            let friend = friends[i];
-            if (!visited.has(friend.id)) {
-                visited.add(person.id);
-                queue.enqueue({person: friend, layer: layer+1});
-            }
-        }
-    }
-
-    return -1;
-}
+export default function getNDegreesOfSeparation(startingPerson, targetId) {}
